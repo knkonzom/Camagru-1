@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,23 +11,13 @@
     <link rel="stylesheet" href="style.css" media="all" />
 </head>
 <body>
-    <nav>
-        <ul>
-            <a href="index.php">Home</a>
-            <a href="signup.php">Register</a>
-        </ul>
-    </nav>
-    <h1>Welcome to Camagru</h1> 
-    <div class="form">
-        <p>Sign in</p>
-        <form action="includes/login.inc.php" method="post">
-            <input type="text" name="mailuid" placeholder="Username/E-mail"><br>
-            <input  type="password" name="pwd" placeholder="Password..."><br>
-            <button type="submit" name="login-submit">Login</button><br>
-        </form>
-    </div>
-    <div class="footer">
-        <p>&copy 2019 Camagru from Bolaleka</p>
-    </div>
+    <div class="nev">   
+        <nav> 
+            <ul>
+                <a href="index.php">Home</a>
+                <a href="signup.php">Register</a>
+            </ul>
+        </nav>
+    </div>   
 </body>
 </html>
