@@ -17,6 +17,7 @@ if(isset($_POST['login-submit']))
         try
         {
                 $sql = "SELECT * FROM users WHERE uidUsers=? OR emailUsers=?;";
+                
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(1, $mailuid);
                 $stmt->bindParam(2, $mailuid);

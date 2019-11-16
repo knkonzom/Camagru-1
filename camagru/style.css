@@ -66,11 +66,12 @@ h1{
 	padding: 10px;
 }
 
+
 div.static {
 	position: static;
 	border: 3px solid #73AD21;
 	border-radius:30px;
-	height:400px;
+	height:500px;
 	width:400px;
 	margin: auto;
   }

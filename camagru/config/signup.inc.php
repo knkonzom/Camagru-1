@@ -52,13 +52,10 @@ if(isset($_POST['signup-submit']))
         
             if($result > 0)
             {  
-                echo "1";
+                
                 $sql = "SELECT * FROM users WHERE uidUsers=? OR emailUsers=? AND verified = '0' ";
-                echo "2";
                 $stmt = $conn->prepare($sql);
-                echo "3";
                 $stmt->bindParam(1, $username);
-                echo "4";
                 $stmt->bindParam(2, $email);
                 $stmt->execute();
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);

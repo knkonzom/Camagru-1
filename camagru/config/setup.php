@@ -33,6 +33,16 @@
           PRIMARY KEY (commentId)
       )";
       $conn->exec($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS `PwdReset`
+      (
+          `pwdResetId` INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+          `pwdResetEmail`  TEXT NOT NULL,
+          `pwdResetSelector` TEXT NOT NULL,
+          `pwdResetToken` LONGTEXT NOT NULL,
+          `pwdResetExpire` TEXT NOT NULL
+      )";
+      $conn->exec($sql);
   }
   catch(PDOException $e)
   {

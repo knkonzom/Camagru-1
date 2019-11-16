@@ -10,20 +10,20 @@
             {
                 if($_GET['error'] == "emptyfields")
                 {
-                    echo '<p> Fill in all fields!</p>';
+                    echo '<strong><p style="background-color:black;text-align:center;font-size:15px;color:red">Fill in all fields!</p></strong>';
                 }
                 else if($_GET['error'] == "wrongpwd")
                 {
-                    echo '<p> You have enter wrong password!</p>';
+                    echo '<strong><p style="background-color:black;text-align:center;font-size:15px;color:red">You have enter wrong password!</p></strong>';
                 }
                 else if($_GET['error'] == "nouser")
                 {
-                    echo '<p>Username/E-mail does not exist!</p>';
-                }
+                    echo '<strong><p style="background-color:black;text-align:center;font-size:15px;color:red">Username/E-mail does not exist!</p></strong>';
+                }              
             }
             else if($_GET['activate'] == "success")
             {
-                echo "<div>Your email is activated, thanks!. You may now login.</div>";
+                echo '<strong><p style="background-color:black;text-align:center;font-size:15px;color:green">Your email is activated, thanks!. You may now login.</p></strong>';
             }
             ?>
             
@@ -31,6 +31,8 @@
                     <input  type="text"  name="mailuid" placeholder="Username/E-mail"><br>
                     <input  type="password" name="pwd" placeholder="Password..."><br>                       
                     <button type="submit" name="login-submit">Login</button><br>
+                    <p style="font-size:15px">Forgot Password? please click ResetPassword</p>
+                    <a href="resetpassword.php">ResetPassword</a>
                 </form>
         </div>
     </main>

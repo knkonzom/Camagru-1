@@ -28,37 +28,39 @@
                     {
                         if($_GET['error'] == "emptyfields")
                         {
-                            echo '<p> Fill in all fields!</p>';
+                            echo '<strong><p style="font-size:20px;color:red">Fill in all fields!</p></strong>';
                         }
                         else if($_GET['error'] == "invaliduidmail")
                         { 
-                            echo '<p> Invalid username/e-mail!</p>';
+                            echo '<strong><p style="font-size:20px;color:red">Invalid username/e-mail!</p></strong>';
                         }
                         else if($_GET['error'] == "invalidmail")
                         { 
-                            echo '<p> Invalid username!</p>';
+                            echo '<strong><p style="font-size:20px;color:red">Invalid username!</p></strong>';
+                            '<p> </p>';
                         }
                         else if($_GET['error'] == "invalidmail")
                         { 
-                            echo '<p> Invalid e-mail!</p>';
+                            echo '<strong><p style=style="font-size:20px;color:red">Invalid e-mail!</p></strong>';
+                            
                         }
                         else if($_GET['error'] == "passwordcheck")
                         { 
-                            echo '<p>Your password do not match!</p>';
+                            echo '<strong><p style=style="font-size:20px;color:red">Your password do not match!</p></strong>';
                         }
                         else if($_GET['error'] == "usertaken")
                         { 
-                            echo '<p>Username already exist!</p>';
+                            echo '<strong><p style="font-size:20px;color:red">Username already exist!</p></strong>';
                         }
                         else if($_GET['error'] == "emailtaken")
                         { 
-                            echo '<p>E-mail already exist!</p>';
+                            echo '<strong><p style=style="font-size:20px;color:red">E-mail already exist!</p></strong>';
                         }
                     }
                     else if($_GET['signup'] == "success")
                     {
-                        echo '<p style="font-size:20px">Signup successful!</p>';
-                        echo '<p style="font-size:12px">To complete your registration, login to your email address and click the verification link.</p>';
+                        echo '<strong><p style="font-size:20px;color:green">Signup successful!</p></strong>';
+                        echo '<strong><p style="background-color:black;text-align:center;font-size:20px;color:green">To complete your registration, login to your email address and click the verification link.</p></strong>';
                     } 
                 ?>
                 <form action="config/signup.inc.php" method="post">
