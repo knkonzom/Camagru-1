@@ -5,11 +5,10 @@
   {
       $sql = "CREATE TABLE IF NOT EXISTS `images`
       (
-          `image_Id` INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-          `image_src` VARCHAR(255) NOT NULL,
-          `user_Id` INT(11),
-          `username` VARCHAR(255) NOT NULL,
-          FOREIGN KEY (`user_Id`) REFERENCES users(`idUsers`)
+            `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `username` VARCHAR(100) NOT NULL,
+            `image` VARCHAR(100) NOT NULL,
+            `like_count` int(11) NOT NULL
       )";
       $conn->exec($sql);
 
@@ -26,11 +25,12 @@
 
       $sql = "CREATE TABLE IF NOT EXISTS `Comments`
       (
-          `commentId` INT(11) UNSIGNED AUTO_INCREMENT,
-          `comment`    VARCHAR(255) NOT NULL,
-          `imageId`    INT(11) NOT NULL,
-          `username`   VARCHAR(50) NOT NULL,
-          PRIMARY KEY (commentId)
+          `commentId` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+          `username`   VARCHAR(128) NOT NULL,
+          `imageId`    VARCHAR(255) NOT NULL,
+          `date`        datetime NOT NULL,
+          `comment`    TEXT NOT NULL,
+          `likes_count` INT(11) NOT NULL
       )";
       $conn->exec($sql);
 
@@ -41,6 +41,44 @@
           `pwdResetSelector` TEXT NOT NULL,
           `pwdResetToken` LONGTEXT NOT NULL,
           `pwdResetExpire` TEXT NOT NULL
+      )";
+      $conn->exec($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS `gallery`
+      (
+          `idGallery` INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+          `titleGallery`  LONGTEXT NOT NULL,
+          `descGallery` LONGTEXT NOT NULL,
+          `imgfullNameGallery` LONGTEXT NOT NULL,
+          `orderGallery` TEXT NOT NULL
+      )";
+      $conn->exec($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS `webcamimage`
+      (
+          `idCamImage` INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+          `imgfullNameCam` LONGTEXT NOT NULL,
+          `username` TEXT NOT NULL,
+          `userEmail` VARCHAR(255) NOT NULL,
+          `likes_count` INT(11) NOT NULL,
+          `orderCamImage` TEXT NOT NULL
+          
+      )";
+      $conn->exec($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS `posts`
+      (
+          `id` INT(11),
+          `text` text,
+          `likes` INT(11)
+      )";
+      $conn->exec($sql);
+
+      $sql = "CREATE TABLE IF NOT EXISTS `likes`
+      (
+          `id` INT(11),
+          `userid` INT(11),
+          `postid` INT(11)
       )";
       $conn->exec($sql);
   }

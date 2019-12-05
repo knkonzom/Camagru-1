@@ -37,10 +37,15 @@ h1{
 	border-radius: 40px;
 	margin:7%;
 }
+
+h2{
+	text-align:center;
+}
+
 .footer{
 	width: 100%;
-	height:5%;
-	bottom:5%;
+	height:2%;
+	bottom:1%;
 	font-size: 120%;
 	background-color: green;
 	font-size-adjust: initial;
@@ -50,7 +55,7 @@ h1{
 }
 
 .form{
-	/* margin-left: auto;
+	 /* margin-left: auto;
 	margin-right: auto;
 	font-size: 150%;
 	width: 40%;
@@ -61,9 +66,9 @@ h1{
 	border-radius: 40px; */
 	max-width: 40%;
 	height:70%;
-  	margin: auto;
+  	 margin: auto; 
  	background: white;
-	padding: 10px;
+	padding: 10px;  
 }
 
 
@@ -85,10 +90,11 @@ div.static {
   input[type=text]{
 	width: 100%;
   	padding: 12px 20px;
-  	margin: 8px 0;
+  	margin: 2px 1px ;
   	box-sizing: border-box;
   	border: 2px solid red;
 	border-radius: 4px;
+
   }
   input[type=password]{
 	width: 100%;
@@ -115,10 +121,12 @@ div.static {
 }
 
 div.gallery {
-	margin: 5px;
+	margin: 3px;
 	border: 1px solid #ccc;
 	float: left;
-	width: 180px;
+	width: 100%;
+	overflow: hidden;
+	
   }
   
   div.gallery:hover {
@@ -133,4 +141,55 @@ div.gallery {
   div.desc {
 	padding: 15px;
 	text-align: center;
+  }
+  
+  div.gallery-upload {
+	border: 3px solid #73AD21;
+	border-radius:30px;
+	height:100px;
+	width:100px;
+	padding-right: 10%;
+  }
+
+  span.c {
+	display: block;
+	width: auto;
+	height: 400px;
+	padding: 5px;
+	border: 1px solid blue;    
+	background-color: yellow; 
+  }
+
+  .button_1{
+    height: 38px;
+    background: #660000;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+textarea{
+	width: 400px;
+	height: 80px;
+	background-color:#fff;
+	resize: none;
+}
+
+.pagination {
+	display: inline-block;
+  }
+  
+  .pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+  }
+
+  div.direct{
+	flex-direction: column;
+	display: flex;
+	
   }

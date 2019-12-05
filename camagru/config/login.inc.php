@@ -4,8 +4,8 @@ if(isset($_POST['login-submit']))
 {
     include "database.php";
     
-    $mailuid = $_POST['mailuid'];
-    $password = $_POST['pwd'];
+    $mailuid = htmlspecialchars($_POST['mailuid']);
+    $password = htmlspecialchars($_POST['pwd']);
     
     if(empty($mailuid) || empty($password) )
     {
@@ -35,8 +35,15 @@ if(isset($_POST['login-submit']))
                         session_start();
                         $_SESSION['userId'] = $row['idUsers'];
                         $_SESSION['userUid'] = $row['uidUsers'];
-                        
-                        header("location: ../userspage.php?login=loginsuccess");
+                        $_SESSION['userEmail'] = $row['emailUsers'];
+                        $_SESSION['verify'] = $row['verified'];
+                        if($row['verified'] == 0)
+                        {
+                            header("location: ../index.php?error=notverified");
+                            exit();
+                        }
+                        header("location: ../HomePage.php?login=loginsuccess");
+                        // var_dump($row);
                         exit();
                     }
                     else
@@ -64,6 +71,7 @@ if(isset($_POST['login-submit']))
 }
 else
 {
-    header("location: ../index.php");
-    exit();
+    echo "fssfg";
+    // header("location: ../index.php");
+    // exit();
 }

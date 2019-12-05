@@ -1,4 +1,5 @@
 <?php
+
     include 'database.php';
 
     $sql = "SELECT idUsers FROM users WHERE token = ? AND verified = '0' ";

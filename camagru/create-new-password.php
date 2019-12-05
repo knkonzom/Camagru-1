@@ -1,5 +1,11 @@
 <?php
-    session_start();
+session_start();
+if(!$_SESSION)
+{
+    header("location: index.php?error=needtologin");
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,8 +47,11 @@
             }
         }
     ?>
+    
 </body>
+    
 <?php
     include "footer.php";
+}
   ?>
 </html>

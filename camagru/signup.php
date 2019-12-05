@@ -15,7 +15,6 @@
         <nav> 
             <ul>
                 <a href="index.php">Home</a>
-                <a href="signup.php">Register</a>
             </ul>
         </nav>
     </div>   
@@ -57,15 +56,15 @@
                             echo '<strong><p style=style="font-size:20px;color:red">E-mail already exist!</p></strong>';
                         }
                     }
-                    else if($_GET['signup'] == "success")
+                    else if(isset($_GET['signup']) == "success")
                     {
                         echo '<strong><p style="font-size:20px;color:green">Signup successful!</p></strong>';
                         echo '<strong><p style="background-color:black;text-align:center;font-size:20px;color:green">To complete your registration, login to your email address and click the verification link.</p></strong>';
                     } 
                 ?>
                 <form action="config/signup.inc.php" method="post">
-                <input type="text" name="uid" placeholder="Username">
-                <input type="text" name="mail" placeholder="E-mail">
+                <input type="text" name="uid" value="<?php if(isset($_GET['uid'])) echo $_GET['uid']; ?>" placeholder="Username">
+                <input type="text" name="mail" value="<?php if(isset($_GET['mail'])) echo $_GET['mail']; ?>" placeholder="E-mail">
                 <input type="password" name="pwd" placeholder="Password">
                 <input type="password" name="pwd-repeat" placeholder="Repeat Password">
                 <button type="submit" name="signup-submit">Signup</button>

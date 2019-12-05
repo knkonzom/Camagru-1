@@ -17,7 +17,7 @@ if(isset($_POST['signup-submit']))
         exit();
 
     }
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$\/", $username) )
+    else if(!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username) )
     {
         header("location: ../signup.php?error=invaliduidmail");
         exit();
@@ -35,6 +35,21 @@ if(isset($_POST['signup-submit']))
     else if ($password !== $passwordRepeat)
     {
         header("location: ../signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
+        exit();
+    }
+    else if(strlen($password) < 8 )
+    {
+        header("location: ../signup.php?error=passwordlen&uid=".$username."&mail=".$email);
+        exit();
+    }
+    else if(!preg_match("/[A-Z]/", $password))
+    {
+        header("location: ../signup.php?error=passwordCAP&uid=".$username."&mail=".$email);
+        exit();
+    }
+    else if(!preg_match("/[0-9]/", $password))
+    {
+        header("location: ../signup.php?error=passwordNUM&uid=".$username."&mail=".$email);
         exit();
     }
     else 
@@ -129,9 +144,9 @@ if(isset($_POST['signup-submit']))
         }
         catch (PDOException $e)
         {
-            print_r($e);
-            // header("location: ../signup.php?error=sqlerror");
-            // exit();
+            
+             header("location: ../signup.php?error=sqlerror");
+            exit();
         }
     }
     $conn = null;
