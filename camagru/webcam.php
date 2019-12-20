@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style.css" media="all" />
     </head>
 </html>
+                <form style="text-decoration-style:none" action="config/logout.inc.php" method="post">
+                    <button style="width:90px;float:right;font-size:20px"type="submit" name="logout-submit"><a href="index.php">Logout</a></button>
+                </form>
 <body>
 
     <div class="video-wrap">

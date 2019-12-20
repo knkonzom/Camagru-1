@@ -65,10 +65,12 @@ include 'function.php';
 
 ?>
 </td>
+
 <?php
 if(isset($_GET['photoid']) == "get")
 {
    $idimage = $_SESSION['image_name'];
+  
    
    echo '<table border="2">
    <tr>
@@ -76,7 +78,7 @@ if(isset($_GET['photoid']) == "get")
            <input type="hidden" name="username" value="'.$user.'">
            <input type="hidden" name="comm_id" value="'.$idimage.'">
            <input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
-           <textarea name="message"></textarea><br>
+           <textarea name="message" pattern="'.htmlspecialchars('[A-Za-z]{3}').'"></textarea><br>
            <button style="width:90px" type="submit" name="comment_id" value="'.$idimage.'">POST</button>
        </form>
    </tr>
