@@ -1,5 +1,7 @@
 <?php
 session_start();
+include "./config/setup.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,14 +15,14 @@ session_start();
 <div class="nev">   
         <nav> 
             <ul>
-                <a href="signup.php">Register</a>
-                <a href="guest-account.php">Guest</a>
+                <a style="font-size:20px" href="signup.php">SignUp</a>
+                <a style="font-size:20px" href="guest-account.php">Guest</a>
             </ul>
         </nav>
     <main>
         <h1>Welcome to Camagru</h1> 
         <div class="static">
-            <div class="text" ><p>Sign in</p>
+            <div class="text" ><p>Sign In</p>
             <?php
             if(isset($_GET['error']))
             {

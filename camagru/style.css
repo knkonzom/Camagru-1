@@ -144,11 +144,12 @@ div.gallery {
   }
   
   div.gallery-upload {
-	border: 3px solid #73AD21;
+	border: 1px solid #73AD21;
+	overflow: scroll;
 	border-radius:30px;
-	height:100px;
+	height:200px;
 	width:100px;
-	padding-right: 10%;
+	padding-left: 10%;
   }
 
   span.c {

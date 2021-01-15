@@ -2,7 +2,9 @@
 
 if(isset($_POST['like_comment']))
 {
-    include "../config/database.php";
+    include "../config/setup.php";
+    $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $imageId = $_POST['comment_id'];
    

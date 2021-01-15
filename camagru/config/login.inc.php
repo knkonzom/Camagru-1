@@ -2,7 +2,10 @@
 
 if(isset($_POST['login-submit']))
 {
-    include "database.php";
+    include "setup.php";
+    $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
     
     $mailuid = htmlspecialchars($_POST['mailuid']);
     $password = htmlspecialchars($_POST['pwd']);
@@ -63,6 +66,7 @@ if(isset($_POST['login-submit']))
         }
         catch (PDOException $e)
         {
+            
             header("location: ../index.php?error=sqlerror");
             exit();
         }

@@ -29,12 +29,26 @@ if(!$_SESSION)
 <body>
 <h1>Gallery</h1>
 <div id="" style="overflow:scroll; height:400px;">
-<button style="width:200px;float:right;font-size:20px"type="submit"><?PHP echo '<a href="webcam.php">'?>
+    <button style="width:200px;float:right;font-size:20px"type="submit"><?PHP echo '<a href="webcam.php">'?>
+<p>start webcam here</p>
 <img style="font-size:50%" src="uploads/camera.png"></a></button>
+<div class="gallery-upload">  
+
+    <form action="includes/gallery-upload.inc.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="image" name="img">
+        <input type="hidden" name="filename" ><br>
+        <input style=" padding:5px 20px;margin:2px 14px;" type="file" name="file"><br>
+        <button style=" width:100px;padding:6px 20px;margin:4px 24px;"  type="submit"  name="submit">UPLOAD</button>
+    </form>
+       
+</div>
 <div style="width:100px" class="gallery">
+
 <?php
 
-    include "config/database.php";
+    include "config/setup.php";
+    $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $user = $_SESSION['userUid'];
     try
     {
@@ -60,16 +74,7 @@ if(!$_SESSION)
 ?>
 </div>
 </div>
-  <div class="gallery-upload">  
-
-    <form action="includes/gallery-upload.inc.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" id="image" name="img">
-        <input type="hidden" name="filename" ><br>
-        <input style=" padding:5px 20px;margin:2px 14px;" type="file" name="file"><br>
-        <button style=" width:100px;padding:6px 20px;margin:4px 24px;"  type="submit"  name="submit">UPLOAD</button>
-    </form>
-       
-</div> 
+   
 <?php
     include "footer.php";
 }

@@ -7,7 +7,9 @@ if(!$_SESSION)
 } else 
 {
 date_default_timezone_set('Africa/Johannesburg');
-include 'config/database.php';
+include 'config/setup.php';
+$conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 include 'includes/comment.inc.php';
 ?> 
 <body>
@@ -25,6 +27,8 @@ include 'includes/comment.inc.php';
     </div> <br>
     <?php
         $user = $_SESSION['userUid'];
+        $userId = $_SESSION['userId'];
+
         echo "<p><h1>Welcome $user</h1></p>";
     ?>
 <div  style="overflow:scroll; height:800px;width:600px"> 
@@ -36,7 +40,7 @@ include 'includes/comment.inc.php';
         try
         {
 
-            $sql2 = "SELECT imgfullNameCam FROM webcamimage WHERE username='$user' ORDER BY idCamImage DESC";
+            $sql2 = "SELECT imgfullNameCam FROM webcamimage WHERE update_userId='$userId' ORDER BY idCamImage DESC";
             $stmt = $conn->prepare($sql2);
             $stmt->execute();
             $row = $stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -48,7 +52,7 @@ include 'includes/comment.inc.php';
                 echo' <a href="'.'uploads/'.$row[$i].'">
                 <img src="uploads/'.$row[$i].'" width="600" height="400">
                 <form action="delete.php" method="POST">
-                    <button style="width:70px;height:20px" type="submit" name="image_id" value="'.$row[$i].'">DELETE</button>
+                    <button style="width:90px;height:20px" type="submit" name="image_id" value="'.$row[$i].'">DELETE</button>
                 </form>         
               ';
               $i++;           

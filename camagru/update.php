@@ -2,7 +2,12 @@
 
 if(isset($_POST['update']))
 {
-    include "config/database.php";
+    session_start();
+    $userId = $_SESSION['userId'];
+
+    include "config/setup.php";
+    $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $Username = $_POST['username'];
     $Email = $_POST['email'];
@@ -63,6 +68,17 @@ if(isset($_POST['update']))
                 $stmt->bindParam(2, $Email); 
                 $stmt->bindParam(3, $newPwdHash); 
                 $stmt->bindParam(4, $verifyID);
+                $stmt->execute();
+
+                $sql = "UPDATE webcamimage SET  username=?, userEmail=? WHERE update_userId=$userId";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(1, $Username); 
+                $stmt->bindParam(2, $Email); 
+                $stmt->execute();
+
+                $sql = "UPDATE comments SET  username=? WHERE update_userId=$userId";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(1, $Username); 
                 $stmt->execute();
                 header("location: index.php?updatesuccess=updated");
                 exit();

@@ -1,5 +1,9 @@
 <?php
-include 'config/database.php';
+//include 'config/database.php';
+include "./config/setup.php";
+
+$conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?> 
 <body>
  <div class="nev">   

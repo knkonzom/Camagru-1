@@ -3,11 +3,13 @@
 if(isset($_POST['reset-submit']))
 {
 
-  include "../config/database.php";
+  include "../config/setup.php";
+  $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
   $selector = bin2hex(random_bytes(8));
   $token = random_bytes(32);
-  $url = "http://localhost:8080/camagru/create-new-password.php?selector=".$selector. "&validator=" . bin2hex($token);
+  $url = "http://localhost/camagru/create-new-password.php?selector=".$selector. "&validator=" . bin2hex($token);
   $expire = date("U") + 1800;
 
   $userEmail = $_POST['email'];

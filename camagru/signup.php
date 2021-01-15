@@ -38,6 +38,14 @@
                             echo '<strong><p style="font-size:20px;color:red">Invalid username!</p></strong>';
                             '<p> </p>';
                         }
+                        else if($_GET['error'] == "passwordlen")
+                        { 
+                            echo '<strong><p style="font-size:20px;color:red">Your password must be up to 8 or more!</p></strong>';
+                        }
+                        else if($_GET['error'] == "passwordCAP" || $_GET['error'] == "passwordNUM")
+                        { 
+                            echo '<strong><p style="font-size:20px;color:red">Your password must be Capital letter and numbers!</p></strong>';
+                        }
                         else if($_GET['error'] == "invalidmail")
                         { 
                             echo '<strong><p style=style="font-size:20px;color:red">Invalid e-mail!</p></strong>';

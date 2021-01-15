@@ -2,7 +2,9 @@
 
 if(isset($_POST['signup-submit']))
 {
-   include 'database.php';
+   include 'setup.php';
+   $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $username = $_POST['uid'];
     $email = $_POST['mail'];
@@ -54,7 +56,6 @@ if(isset($_POST['signup-submit']))
     }
     else 
     {
-       
         try 
         {
             
@@ -94,13 +95,13 @@ if(isset($_POST['signup-submit']))
             {
                 
                 $token =  bin2hex(random_bytes(50));
-                $verificationLink = "http://localhost:8080/camagru/config/activate.inc.php?code=".$token;
+                $verificationLink = "http://localhost/camagru/config/activate.inc.php?code=".$token;
                 $htmlStr = "";
                 $htmlStr .= "Hi " . $username . ",<br /><br />";
                 $htmlStr .= "Please click the button below to verify your email and have access to the login page.<br /><br /><br />";
                 $htmlStr .= "<a href='{$verificationLink}' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>VERIFY EMAIL</a><br /><br /><br />";
                 $htmlStr .= "Kind regards,<br />";
-                $htmlStr .= "<a href='http://localhost:8080/' target='_blank'>The Code of Camagru</a><br />";
+                $htmlStr .= "<a href='http://localhost/' target='_blank'>The Code of Camagru</a><br />";
 
                 $name = "The Code of Camagru";
                 $email_sender = "no-reply@Camagru.com";
@@ -144,9 +145,9 @@ if(isset($_POST['signup-submit']))
         }
         catch (PDOException $e)
         {
-            
-             header("location: ../signup.php?error=sqlerror");
-            exit();
+            echo $e->getMessage();
+            //  header("location: ../signup.php?error=sqlerror");
+            // exit();
         }
     }
     $conn = null;

@@ -1,11 +1,13 @@
 <?php
 
-include "config/database.php";
+include "config/setup.php";
+$conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['image_id']))
 {
     
-    $file_path = 'uploads/' . $_POST["image_id"];
+    $file_path = "uploads/" . $_POST["image_id"];
     if(unlink($file_path))
     {   
         try
@@ -20,7 +22,7 @@ if(isset($_POST['image_id']))
         {
             echo $e->getMessage();
         }
-    }
+   }
 }
 
 ?>

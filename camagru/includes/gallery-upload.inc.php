@@ -6,6 +6,8 @@ if(isset($_POST['submit']))
     session_start();
     $user = $_SESSION['userUid'];
     $tt = $_SESSION['userEmail'];
+    $userId = $_SESSION['userId'];
+
 
     $newFileName = $_POST['filename'];
    
@@ -31,10 +33,12 @@ if(isset($_POST['submit']))
             if($fileSize < 2000000)
             {
                 
-                $imageFullName = $newFileName . mktime() . "." . $fileActualExt;
+                $imageFullName = $newFileName . mktime(0) . "." . $fileActualExt;
                 $fileDestination = "../uploads/" . $imageFullName;
 
-                include "../config/database.php";  
+                include "../config/setup.php";
+                $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
                     try
                     {
                         
@@ -43,7 +47,7 @@ if(isset($_POST['submit']))
                         $result = $stmt->fetch(PDO::FETCH_ASSOC);
                         $setImageOrder = $result + 1;
                         
-                        $sql = "INSERT INTO webcamimage (imgfullNameCam, username, userEmail, likes_count, orderCamImage) VALUES ('{$imageFullName}', '{$user}', '{$tt}', 0, '{$setImageOrder}')";
+                        $sql = "INSERT INTO webcamimage (update_userId, imgfullNameCam, username, userEmail, likes_count, orderCamImage) VALUES ('{$userId}', '{$imageFullName}', '{$user}', '{$tt}', 0, '{$setImageOrder}')";
                         $stmt = $conn->prepare($sql);
                         $stmt->execute();
                         move_uploaded_file($fileTempName, $fileDestination);

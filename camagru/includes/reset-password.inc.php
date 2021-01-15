@@ -20,7 +20,9 @@
         }
         $currentDate = date("U");
     
-        include "../config/database.php";
+        include "../setup.php/database.php";
+        $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = " SELECT * FROM pwdreset WHERE pwdResetSelector=? AND pwdResetExpire >= ?";
         $stmt = $conn->prepare($sql);

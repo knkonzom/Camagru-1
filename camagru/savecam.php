@@ -8,6 +8,7 @@ if(isset($_POST['upload']))
     session_start();
     $user = $_SESSION['userUid'];
     $tt = $_SESSION['userEmail'];
+    $userId = $_SESSION['userId'];
     
     if(empty($_POST['img']))
     {
@@ -21,11 +22,13 @@ if(isset($_POST['upload']))
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
-        $newdata = mktime().'.jpeg';
-        $file = $upload_dir.mktime().'.jpeg';
+        $newdata = mktime(0).'.jpeg';
+        $file = $upload_dir.mktime(0).'.jpeg';
         file_put_contents($file, $data);
 
-        include "config/database.php";
+        include "config/setup.php";
+        $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         try
         {    
@@ -36,7 +39,7 @@ if(isset($_POST['upload']))
             $setImageOrder = $result + 1;
 
             
-            $sql = "INSERT INTO webcamimage (imgfullNameCam, username, userEmail, likes_count, orderCamImage) VALUES ('{$newdata}', '{$user}', '{$tt}', 0, '{$setImageOrder}')";
+            $sql = "INSERT INTO webcamimage (update_userId, imgfullNameCam, username, userEmail, likes_count, orderCamImage) VALUES ('{$userId}','{$newdata}', '{$user}', '{$tt}', 0, '{$setImageOrder}')";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             file_put_contents($file, $data);

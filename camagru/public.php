@@ -1,9 +1,11 @@
 <?php
 session_start();
 date_default_timezone_set('Africa/Johannesburg');
-include 'config/database.php';
+include 'config/setup.php';
 include 'function.php';
-// include 'includes/comment.inc.php';
+$conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ include 'includes/comment.inc.php';
 ?> 
  
 <body>
