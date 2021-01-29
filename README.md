@@ -29,6 +29,6 @@
 *  Username
 *  Email Address
 *  Password
-*  Dele pictures
+*  Take/Delete pictures
 *  Comments
 *  Public Gallery
