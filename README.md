@@ -19,16 +19,16 @@
 * Register and Login
 
 # Features
-  ## User Creation
-  *  Username
-  *  A secure password
-  *  A valid email address
-  *  Authentificatioms
+  ### User Creation
+    *  Username
+    *  A secure password
+    *  A valid email address
+    *  Authentifications
 
-  ## User Prefernces
-  *  Username
-  *  Email Address
-  *  Password
-  *  Dele pictures
-  *  Comments
-  *  Public Gallery
+  ### User Prefernces
+    *  Username
+    *  Email Address
+    *  Password
+    *  Dele pictures
+    *  Comments
+    *  Public Gallery
