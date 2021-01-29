@@ -20,7 +20,7 @@
 
 # Features
 ## User Creation
-  *     Username
+*  Username
   *     A secure password
   *     A valid email address
   *     Authentifications
