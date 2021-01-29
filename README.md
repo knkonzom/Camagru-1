@@ -20,15 +20,15 @@
 
 # Features
   ### User Creation
-    *  Username
-    *  A secure password
-    *  A valid email address
-    *  Authentifications
+      * Username
+      * A secure password
+      * A valid email address
+      * Authentifications
 
   ### User Prefernces
-    *  Username
-    *  Email Address
-    *  Password
-    *  Dele pictures
-    *  Comments
-    *  Public Gallery
+    * Username
+    * Email Address
+    * Password
+    * Dele pictures
+    * Comments
+    * Public Gallery
