@@ -5,10 +5,31 @@
 # Requirements
 * PHP
 * XAMPP
-* SQL
+* MYSQL
 * HTML
 * Javascript
+* CSS
+* PDO (Abstraction driver to communicate with the database)
 
 # Configuration
+* Need to have your XAMPP install and setup
+* Add your git repository folder to htdocs (htdocs can be found in XAMPP folder)
+* Configure MYSQL to your Database
+* Setup up your email verification (php.ini)
+* Register and Login
 
-# Outcomes
+# Features
+## User Creation
+*  Username
+*  A secure password
+*  A valid email address
+*  Authentificatioms
+
+## User Prefernces
+*  Username
+*  Email Address
+*  Password
+*  Dele pictures
+*  Comments
+
+## Public Gallery
