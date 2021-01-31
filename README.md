@@ -12,7 +12,7 @@
 * PDO (Abstraction driver to communicate with the database)
 
 # Configuration
-## To run this application make sure you have the following installed:
+### To run this application make sure you have the following installed:
 *  Install your prefered Apache web-server(MAMP/WAMP/XAMP)
 *  Add your git repository folder to htdocs (htdocs can be found in XAMPP folder)
 *  To enable your SMTP mailer from localhost, visit https://www.youtube.com/watch?v=RPOTM9431SU
