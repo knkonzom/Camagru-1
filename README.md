@@ -12,11 +12,12 @@
 * PDO (Abstraction driver to communicate with the database)
 
 # Configuration
-* Need to have your XAMPP install and setup
-* Add your git repository folder to htdocs (htdocs can be found in XAMPP folder)
-* Configure MYSQL to your Database
-* Setup up your email verification (php.ini)
-* Register and Login
+## To run this application make sure you have the following installed:
+*  Install your prefered Apache web-server(MAMP/WAMP/XAMP)
+*  Add your git repository folder to htdocs (htdocs can be found in XAMPP folder)
+*  To enable your SMTP mailer from localhost, visit https://www.youtube.com/watch?v=RPOTM9431SU
+*  The next step is to run http://localhost/camagru
+*  Register and Login
 
 # Features
 ## User Creation
