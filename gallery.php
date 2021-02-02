@@ -29,10 +29,10 @@ if(!$_SESSION)
 <body>
 <h1>Gallery</h1>
 <div id="" style="overflow:scroll; height:400px;">
-    <button style="width:200px;float:right;font-size:20px"type="submit"><?PHP echo '<a href="webcam.php">'?>
+    <button style="width:200px;float:right;font-size:15px"type="submit"><?PHP echo '<a href="webcam.php">'?>
 <p>start webcam here</p>
-<img style="font-size:50%" src="uploads/camera.png"></a></button>
-<div class="gallery-upload">  
+<img style="font-size:30%" src="uploads/default/image.png"></a></button>
+<div class="">  
 
     <form action="includes/gallery-upload.inc.php" method="post" enctype="multipart/form-data">
         <input type="hidden" id="image" name="img">
@@ -50,6 +50,8 @@ if(!$_SESSION)
     $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $user = $_SESSION['userUid'];
+    $userId = $_SESSION['userId'];
+
     try
     {
         $sql2 = "SELECT * FROM webcamimage WHERE username = '$user' ORDER BY idCamImage DESC";
@@ -76,9 +78,11 @@ if(!$_SESSION)
 </div>
    
 <?php
-    include "footer.php";
+    
 }
 ?>
 </body>
-
+<div   style="margin-top: 200px;background-color:green;height:40px">
+        <p style="font-size:40%;margin-top:200px;">&copy 2019 Camagru from Bolaleka</p>
+    </div>
 </html>

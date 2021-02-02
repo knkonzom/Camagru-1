@@ -51,7 +51,7 @@ if(isset($_POST['submit']))
                         $stmt = $conn->prepare($sql);
                         $stmt->execute();
                         move_uploaded_file($fileTempName, $fileDestination);
-                        header("location: ../gallery.php?upload=success");
+                        header("location: ../HomePage.php?upload=success");
                     }
                     catch(PDOException $e)
                     {

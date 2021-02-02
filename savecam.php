@@ -57,7 +57,7 @@ if(isset($_POST['upload']))
                 // exit();
             }
             
-            header("location: gallery.php?upload=success");
+            header("location: HomePage.php?upload=success");
          }
         catch(PDOException $e)
         {

@@ -16,7 +16,7 @@ if(isset($_POST['image_id']))
         $sql = "DELETE FROM  webcamimage WHERE imgfullNameCam ='".$_POST["image_id"]."'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        header("location: gallery.php?remove=success");
+        header("location: HomePage.php?remove=success");
         }
         catch(PDOException $e)
         {

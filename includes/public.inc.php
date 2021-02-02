@@ -7,7 +7,7 @@
       
       session_start(); 
       $image_id = $_POST['comm_id'];
-      $username = $_POST['username'];
+    //  $username = $_POST['username'];
       $userId = $_SESSION['userId'];
 
        
@@ -47,7 +47,7 @@
 
               if(mail($recipient_email, $subject, $body, $headers))
               {
-                
+                $username = $_SESSION['commentator'];
                 $sql = "INSERT INTO comments (update_userId, username, imageId, date, comment, likes_count) VALUES ('$userId','$username', '$image_id', '$date', '$comment', 0) ";
                 $result = $conn->query($sql);
                 

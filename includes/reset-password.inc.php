@@ -20,7 +20,7 @@
         }
         $currentDate = date("U");
     
-        include "../setup.php/database.php";
+        include "../config/database.php";
         $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

@@ -42,9 +42,9 @@ h2{
 	text-align:center;
 }
 
-.footer{
+/* .footer{
 	width: 100%;
-	height:2%;
+	height:20%;
 	bottom:1%;
 	font-size: 120%;
 	background-color: green;
@@ -52,7 +52,16 @@ h2{
 	position: fixed;
 	text-align:right;	
 	font-style: italic;
+	
+} */
+div.myfooter {
+    clear: both;
+    position: relative;
+    height: 200px;
+	margin-top: 200px;
+	height:40%;
 }
+
 
 .form{
 	 /* margin-left: auto;
@@ -147,8 +156,8 @@ div.gallery {
 	border: 1px solid #73AD21;
 	overflow: scroll;
 	border-radius:30px;
-	height:200px;
-	width:100px;
+	height:100px;
+	width:60px;
 	padding-left: 10%;
   }
 

@@ -81,7 +81,10 @@
         </div>
     </main>
 <?php
-    include "footer.php";
+
 ?>
 </body>
+<div   style="margin-top: 200px;background-color:green;height:40px;font-style: italic;">
+        <p style="font-size:90%;margin-top:200px;text-align:right;">&copy 2019 Camagru from Bolaleka</p>
+    </div>
 </html>

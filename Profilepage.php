@@ -7,6 +7,13 @@ if(!$_SESSION)
 } else 
 {
 ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="example">
+    <title>Camagru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" media="all" />
+</head>
 <body>
  <div class="nev">   
         <nav> 
@@ -19,8 +26,21 @@ if(!$_SESSION)
         </nav>
     </div> <br>
     <?php
+        include 'config/setup.php';
+
+        $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);         
+
+
         $user = $_SESSION['userUid'];
-        echo "<p><h1>Welcome $user</h1></p>";
+        $userId = $_SESSION['userId'];
+        $sql = " SELECT * FROM users WHERE idUsers='$userId'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $currentUsername = $row['uidUsers'];
+        echo "<p><h1>Welcome $currentUsername</h1></p>";
             if(isset($_GET['error']))
             {
                 if($_GET['error'] == "emptyfields")
@@ -48,8 +68,10 @@ if(!$_SESSION)
         <input type ="submit" name="update" value="Update Profile">
     </form>
 </body>
-
+<div   style="margin-top: 200px;background-color:green;height:40px;font-style: italic;">
+        <p style="font-size:60%;margin-top:300px;text-align:right;">&copy 2019 Camagru from Bolaleka</p>
+</div>
 <?php 
-    include "footer.php";
+   
 }
 ?>

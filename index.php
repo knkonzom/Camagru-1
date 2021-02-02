@@ -62,6 +62,6 @@ include "./config/setup.php";
                 </form>
         </div>
     </main>
-    <div  class="footer">
-        <p style="font-size:40%;">&copy 2019 Camagru from Bolaleka</p>
+    <div   style="margin-top: 200px;background-color:green;height:40px;font-style: italic;">
+        <p style="font-size:40%;margin-top:200px;text-align:right;">&copy 2019 Camagru from Bolaleka</p>
     </div>

@@ -21,18 +21,18 @@
     <div class="controller">
         <button id="snap">Capture</button>
     </div>
+    <!-- Webcam video snapshot -->
+    <canvas style="margin-left:400px"id="canvas" width="300" height="150"></canvas>
     <form action="savecam.php" method="POST">
+        <button onclick="save()" id="submit" name="upload">SAVE</button>
         <input type="hidden" id="image" name="img">
         <ul>
-			<li><label><img style="width: 100px;" onclick="merge(100,80,'./uploads/alphatest1.png')" src="uploads/alphatest1.png"></label></li>
-			<li><label><img style="width: 100px;" onclick="merge(40,80,'./uploads/alphatest2.png')" src="uploads/alphatest2.png"></label></li>
-			<li><label><img style="width: 100px;" onclick="merge(100,80,'./uploads/alphatest3.png')" src="uploads/alphatest3.png"></label></li>
+			<li><label><img style="margin-left:1000px;" onclick="merge(100,80,'./uploads/default/sticker1.jpg')" src="uploads/default/sticker1.jpg"></label></li>
+			<li><label><img style="margin-left:1000px;" onclick="merge(100,80,'./uploads/default/sticker2.jpg')" src="uploads/default/sticker2.jpg"></label></li>
+			<li><label><img style="margin-left:1000px;" onclick="merge(100,80,'./uploads/default/sticker3.jpg')" src="uploads/default/sticker3.jpg"></label></li>
 		</ul>
-        <button onclick="save()" id="submit" name="upload">SAVE</button>
     </form>
 
-    <!-- Webcam video snapshot -->
-    <canvas id="canvas" width="200" height="100"></canvas>
 
     <script>
       
@@ -46,7 +46,7 @@
       const constraints = {
           audio: false,
           video:{
-              width: 200, height: 100
+              width: 400, height: 200
           }
       };
       
@@ -72,7 +72,7 @@
       // Draw image
       var context = canvas.getContext('2d');
       snap.addEventListener("click",function(){
-          context.drawImage(video, 0, 0, 200, 100);
+          context.drawImage(video, 0, 0, 400, 150);
           console.log(photo.value);
       });
 

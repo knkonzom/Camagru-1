@@ -12,6 +12,13 @@ $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 include 'includes/comment.inc.php';
 ?> 
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="example">
+    <title>Camagru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" media="all" />
+</head>
 <body>
  <div class="nev">   
         <nav> 
@@ -28,10 +35,16 @@ include 'includes/comment.inc.php';
     <?php
         $user = $_SESSION['userUid'];
         $userId = $_SESSION['userId'];
+       
+        $sql = " SELECT * FROM users WHERE idUsers='$userId'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
 
-        echo "<p><h1>Welcome $user</h1></p>";
+        $row = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $currentUsername = $row['uidUsers'];
+        echo "<p><h1>Welcome $currentUsername </h1></p>";
     ?>
-<div  style="overflow:scroll; height:800px;width:600px"> 
+<div  style="overflow:auto; height:800px;width:600px"> 
 <?PHP include 'pagination.php'?>
 <div class="pagination">
 <a href="HomePage.php" class="next">Next &raquo;</a>
@@ -62,12 +75,16 @@ include 'includes/comment.inc.php';
         {
             echo $e->getMessage();
         }
+    }
     
 ?>
 <a href="HomePage.php" class="previous">&laquo; Previous</a>
 </div>
+</div>
 </body>
-<?php 
-    include "footer.php";
-}
-?>
+
+<div   style="margin-top: 200px;background-color:green;height:40px;font-style: italic;">
+        <p style="font-size:60%;margin-top:300px;text-align:right;">&copy 2019 Camagru from Bolaleka</p>
+</div>
+
+

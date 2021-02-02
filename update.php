@@ -15,79 +15,73 @@ if(isset($_POST['update']))
     $Newpwd = $_POST['new-pwd'];
     $RepeatNewPwd = $_POST['repeat-new-pwd'];
    
-    if(empty($Username) || empty($Email) || empty($Oldpwd) || empty($Newpwd) || empty($RepeatNewPwd) )
-    {
+    // if(empty($Username) || empty($Email) || empty($Oldpwd) || empty($Newpwd) || empty($RepeatNewPwd) )
+    // {
         
-        header("location: Profilepage.php?error=emptyfields");
-        exit();
-    }
-    else if(!filter_var($Email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$\/", $Username) )
-    {
-        header("location: Profilepage.php?error=invaliduidmail");
-        exit();
-    }
-    else if(!filter_var($Email, FILTER_VALIDATE_EMAIL))
+    //     header("location: Profilepage.php?error=emptyfields");
+    //     exit();
+    // }
+    // if(!filter_var($Email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$\/", $Username) )
+    // {
+    //     header("location: Profilepage.php?error=invaliduidmail");
+    //     exit();
+    // }
+    if(!preg_match("/^[a-zA-Z0-9]*$/", $Username))
     {
         header("location: Profilepage.php?error=invalidmail&uid=".$Username);
-        exit();
+        
     }
-    else if(!preg_match("/^[a-zA-Z0-9]*$/", $Username))
+    else if(!empty($Email) && !filter_var($Email, FILTER_VALIDATE_EMAIL))
     {
         header("location: Profilepage.php?error=invalidmail&uid=".$Email);
-        exit();
+        
     }
     else if ($Newpwd !== $RepeatNewPwd)
     {
         header("location: Profilepage.php?error=passwordcheck&uid=".$Username."&mail=".$Email);
-        exit();
     }
     else 
     {
+        
         try {
-        $sql = " SELECT * FROM users WHERE uidUsers=? OR emailUsers=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(1, $Username); 
-        $stmt->bindParam(2, $Email); 
-        $stmt->execute();
-        if($row = $stmt->fetch(PDO::FETCH_ASSOC))
-        {
+        
+                $sql = " SELECT * FROM users WHERE idUsers= '$userId' ";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                if($row = $stmt->fetch(PDO::FETCH_ASSOC))
+                {
+                    if($Username) {
+
+                       
+                        $sql = "UPDATE users SET  uidUsers=? WHERE idUsers=$userId";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(1, $Username); 
+                        $stmt->execute();
+
+                        $sql = "UPDATE webcamimage SET  username=? WHERE update_userId=$userId";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(1, $Username); 
+                        $stmt->execute();
+
+                        $sql = "UPDATE comments SET  username=? WHERE update_userId=$userId";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(1, $Username); 
+                        $stmt->execute();
+
+                        $sql = " SELECT * FROM users WHERE idUsers='$userId'";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
+
+                        $row = $stmt->fetch(PDO::FETCH_ASSOC); 
+                        
+                        $_SESSION['newUsername'] = $row['uidUsers'];
+                        
+                        header("location: HomePage.php?updatesuccess=updated");
+                    }
+                
+                        
+            
            
-            $oldpwdCheck = password_verify($Oldpwd, $row["pwdUsers"]);
-            if($oldpwdCheck === false)
-            {
-                header("location: Profilepage.php?error=old-pwd-not-match-current-pwd");
-                exit();
-            }
-            else if($oldpwdCheck === true)
-            {
-                $verifyID = $row['idUsers'];
-                $sql = "UPDATE users SET  uidUsers=?, emailUsers=?, pwdUsers=? WHERE idUsers=?";
-                $stmt = $conn->prepare($sql);
-                $newPwdHash = password_hash($Newpwd, PASSWORD_DEFAULT);
-                $stmt->bindParam(1, $Username); 
-                $stmt->bindParam(2, $Email); 
-                $stmt->bindParam(3, $newPwdHash); 
-                $stmt->bindParam(4, $verifyID);
-                $stmt->execute();
-
-                $sql = "UPDATE webcamimage SET  username=?, userEmail=? WHERE update_userId=$userId";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(1, $Username); 
-                $stmt->bindParam(2, $Email); 
-                $stmt->execute();
-
-                $sql = "UPDATE comments SET  username=? WHERE update_userId=$userId";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(1, $Username); 
-                $stmt->execute();
-                header("location: index.php?updatesuccess=updated");
-                exit();
-            }
-            else
-            {
-                echo "Your old password must be match with your current password or try reset your password from login page.";
-                exit();
-            }
         }
         }catch (PDOException $e)
         {
