@@ -11,7 +11,7 @@ if(isset($_POST['update']))
 
     $Username = $_POST['username'];
     $Email = $_POST['email'];
-    $Oldpwd = $_POST['old-pwd'];
+  //  $Oldpwd = $_POST['old-pwd'];
     $Newpwd = $_POST['new-pwd'];
     $RepeatNewPwd = $_POST['repeat-new-pwd'];
    
@@ -44,6 +44,7 @@ if(isset($_POST['update']))
     {
         
         try {
+            echo "2";
         
                 $sql = " SELECT * FROM users WHERE idUsers= '$userId' ";
                 $stmt = $conn->prepare($sql);
@@ -77,7 +78,23 @@ if(isset($_POST['update']))
                         $_SESSION['newUsername'] = $row['uidUsers'];
                         
                         header("location: HomePage.php?updatesuccess=updated");
+                    }else if($Newpwd) {
+                        if($Newpwd === $RepeatNewPwd) {
+
+                        $newPwdHash = password_hash($Newpwd, PASSWORD_DEFAULT);
+
+                            $sql = "UPDATE users SET  pwdUsers=? WHERE idUsers=$userId";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bindParam(1, $newPwdHash); 
+                            $stmt->execute();
+                            header("location: HomePage.php?updatesuccess=updated");
+
+                        }
                     }
+                    
+
+
+
                 
                         
             

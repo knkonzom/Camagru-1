@@ -61,7 +61,7 @@ if(!$_SESSION)
     <form action="update.php" method="Post">
         <input type ="text" name="username" placeholder="Enter username"/><br/>
         <input type ="text" name="email" placeholder="Enter E-mail"/><br/>
-        <input type ="password" name="old-pwd" placeholder="Enter Old Password"/><br/>
+        <!-- <input type ="password" name="old-pwd" placeholder="Enter Old Password"/><br/> -->
         <input type ="password" name="new-pwd" placeholder="Enter New Password"/><br/>
         <input type ="password" name="repeat-new-pwd" placeholder="Confirm New Password"/><br/>
         

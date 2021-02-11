@@ -5,6 +5,13 @@ include "./config/setup.php";
 $conn = new PDO("mysql:host=$DB_DSN;dbname=camagru", $DB_USER, $DB_PASSWORD);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?> 
+ <head>
+    <meta charset="utf-8">
+    <meta name="description" content="example">
+    <title>Camagru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" media="all" />
+</head>
 <body>
  <div class="nev">   
         <nav> 
@@ -47,7 +54,6 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 </tr>
 </table>
 </body>
-<?php 
-    include "footer.php";
-
-?>
+<div   style="margin-top:2000px;background-color:green;height:40px;font-style: italic;">
+        <p style="font-size:60%;margin-top:200px;text-align:right;">&copy 2019 Camagru from Bolaleka</p>
+    </div>
