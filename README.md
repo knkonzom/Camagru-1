@@ -27,8 +27,10 @@ File Structure & Code Breakdown
 # Database Management Systems (DBMS):
 * MySQL
 * phpMyAdmin
+
 Server:
 * PHP
+
 Client:
 * HTML & CSS
 * JavaScript
