@@ -8,9 +8,6 @@ try{
 
     $conn = new PDO("mysql:host=$DB_DSN;", $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // if(isset($conn)) {
-    //     echo '<strong><p style="font-size:20px;color:green">Connected successfully</p></strong>';
-    // }
 
 }
 catch(PDOException $e)
