@@ -13,7 +13,7 @@ Camagru is the first Web Project at WeThinkCode. It is an image editing and shar
 Download project source code from repository:
 Use Git to clone repository to desktop.
 
-Download MAMP/XAMPP from the Bitnami page.
+Download MAMP/XAMPP from the Bitnami page, https://bitnami.com/stack/mamp/installer.
 Once downloaded, install software.
 Begin servers in the app interface if servers aren't running.
 Copy cloned Camagru repository to the apache2\htdocs folder, which is located in the installation path of MAMP/XAMPP.
