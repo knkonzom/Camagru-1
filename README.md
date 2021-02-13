@@ -1,14 +1,14 @@
-Camagru Documentation
+## Camagru Documentation ##
 
 Camagru is the first Web Project at WeThinkCode. It is an image editing and sharing platform similar to Instagram.
 
-The requirements for the project:
+# The requirements for the project:
 * HTML, CSS
 * PHP
 * MAMP/XAMPP
 * MySQL
   
-To begin:
+# To begin:
 
 Download project source code from repository:
 Use Git to clone repository to desktop.
@@ -24,7 +24,7 @@ The website should be up and running.
 To check that the site is running well, navigate to phpMyAdmin folder http://localhost/phpmyadmin. Once logged into the management system, go to databases and verify the creation of a Camagru database.
 File Structure & Code Breakdown
 
-Database Management Systems (DBMS):
+# Database Management Systems (DBMS):
 * MySQL
 * phpMyAdmin
 Server:
@@ -33,7 +33,7 @@ Client:
 * HTML & CSS
 * JavaScript
 
-File Structure:
+# File Structure:
 
     config:
     * activate.inc.php
@@ -85,9 +85,9 @@ File Structure:
     * webcam.php
 
 
-Running Camagru
+# Running Camagru
 
-Start Web Server:
+# Start Web Server:
 * Launch MAMP/XAMPP, start all servers.
 * Open browser & navigate to http://localhost/Camagru. You will find the landing page.
 Create, verify and login to account:
